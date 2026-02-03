@@ -3,24 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Kepala Sekolah - Minimalist</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Dashboard Kepala Sekolah - Futuristic Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Kepsek Specific Styles */
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 30%, #16213e 70%, #0f3460 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 230, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(100, 200, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Effect Base */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(100, 150, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Header Section */
         .kepsek-header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(51, 65, 85, 0.7) 100%);
             color: white;
             padding: 48px 40px;
             border-radius: 24px;
             text-align: center;
             margin-bottom: 32px;
-            box-shadow: 0 20px 60px rgba(30, 41, 59, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         .kepsek-header::before {
@@ -30,7 +105,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
         
         .kepsek-header::after {
@@ -40,7 +115,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         }
         
         .kepsek-title {
@@ -51,6 +126,7 @@
             letter-spacing: -0.5px;
             position: relative;
             z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .kepsek-subtitle {
@@ -60,8 +136,9 @@
             font-weight: 400;
             position: relative;
             z-index: 2;
+            color: rgba(255, 255, 255, 0.85);
         }
-        
+
         /* Stats Grid */
         .stats-grid {
             display: grid;
@@ -71,20 +148,28 @@
         }
         
         .stat-card-minimal {
-            background: #ffffff;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 18px;
             padding: 28px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 
+                0 8px 24px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
         
         .stat-card-minimal:hover {
-            border-color: #dbeafe;
-            transform: translateY(-6px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            border-color: rgba(100, 150, 255, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(100, 150, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .stat-card-minimal::before {
@@ -93,37 +178,42 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
         }
         
         .stat-icon-circle {
-            width: 64px;
-            height: 64px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            color: #3b82f6;
-            font-size: 1.5em;
+            color: #a3c4ff;
+            font-size: 1.8em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
         }
         
         .stat-number {
-            font-size: 2.2em;
+            font-size: 2.4em;
             font-weight: 700;
-            color: #1e293b;
+            color: #ffffff;
             margin: 12px 0;
             line-height: 1;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         
         .stat-label {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9em;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
         
         .stat-trend {
@@ -131,22 +221,28 @@
             color: #10b981;
             margin-top: 8px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
         
         .stat-trend.negative {
             color: #ef4444;
         }
-        
+
         /* Filter Tabs */
         .filter-tabs {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 24px;
             flex-wrap: wrap;
-            padding: 4px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         
         .filter-tab {
@@ -155,27 +251,46 @@
             padding: 14px 20px;
             background: transparent;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 14px;
             font-weight: 500;
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .filter-tab.active {
-            background: #ffffff;
-            color: #3b82f6;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
-            border: 1px solid #dbeafe;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .filter-tab.active::before {
+            opacity: 1;
         }
         
         .filter-tab:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.5);
-            color: #475569;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            transform: translateY(-2px);
         }
-        
+
         /* Monitor Grid */
         .monitor-grid {
             display: grid;
@@ -207,22 +322,30 @@
                 flex-direction: column;
             }
         }
-        
+
         /* Data Cards */
         .data-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 20px;
             padding: 32px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             height: 100%;
             display: flex;
             flex-direction: column;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
         
         .data-card:hover {
-            border-color: #dbeafe;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
+            border-color: rgba(100, 150, 255, 0.3);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                0 0 25px rgba(100, 150, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .data-card-header {
@@ -231,26 +354,28 @@
             align-items: center;
             margin-bottom: 28px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .data-card-title {
             font-size: 1.4em;
             font-weight: 600;
-            color: #1e293b;
+            color: #ffffff;
             margin: 0;
             display: flex;
             align-items: center;
             gap: 12px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .data-card-count {
-            background: #f1f5f9;
-            color: #475569;
+            background: rgba(59, 130, 246, 0.2);
+            color: #a3c4ff;
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.9em;
             font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
         
         .data-list {
@@ -265,25 +390,30 @@
         }
         
         .data-list::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: rgba(100, 150, 255, 0.3);
+            border-radius: 3px;
+        }
+        
+        .data-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 3px;
         }
         
         .data-item {
-            background: #f8fafc;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 14px;
             padding: 20px;
             margin-bottom: 16px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             position: relative;
         }
         
         .data-item:hover {
-            background: #ffffff;
-            border-color: #dbeafe;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(100, 150, 255, 0.3);
             transform: translateX(4px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         
         .data-item-header {
@@ -295,22 +425,23 @@
         
         .data-item-title {
             font-weight: 600;
-            color: #1e293b;
+            color: #ffffff;
             font-size: 1em;
             margin: 0;
         }
         
         .data-item-time {
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.85em;
-            background: #f1f5f9;
+            background: rgba(255, 255, 255, 0.05);
             padding: 4px 10px;
             border-radius: 12px;
             white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .data-item-content {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.9em;
             line-height: 1.5;
             margin-bottom: 16px;
@@ -321,9 +452,9 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.85em;
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.6);
             padding-top: 12px;
-            border-top: 1px solid #f1f5f9;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .data-item-actions {
@@ -332,26 +463,28 @@
         }
         
         .action-btn-small {
-            background: #f1f5f9;
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
             padding: 6px 12px;
             font-size: 0.8em;
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.8);
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
         .action-btn-small:hover {
-            background: #3b82f6;
+            background: rgba(59, 130, 246, 0.3);
             color: white;
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
         }
-        
+
         /* Empty State */
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.5);
         }
         
         .empty-state-icon {
@@ -359,18 +492,20 @@
             opacity: 0.3;
             margin-bottom: 16px;
         }
-        
+
         /* Live Status */
         .live-status {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.7) 0%, rgba(5, 150, 105, 0.7) 100%);
             color: white;
-            padding: 16px 24px;
+            padding: 18px 24px;
             border-radius: 16px;
             margin-bottom: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .live-status-content {
@@ -385,13 +520,14 @@
             background: #ffffff;
             border-radius: 50%;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 10px #10b981;
         }
         
         .last-update {
             color: rgba(255, 255, 255, 0.9);
             font-size: 0.9em;
         }
-        
+
         /* Guide Cards */
         .guide-grid {
             display: grid;
@@ -401,27 +537,36 @@
         }
         
         .guide-card {
-            background: #ffffff;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 18px;
             padding: 28px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            box-shadow: 
+                0 8px 24px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
         
         .guide-card:hover {
-            border-color: #dbeafe;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            border-color: rgba(100, 150, 255, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(100, 150, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .guide-card h4 {
-            color: #1e293b;
-            margin-bottom: 16px;
-            font-size: 1.1em;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.2em;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 10px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .guide-card ul {
@@ -431,18 +576,100 @@
         .guide-card li {
             background: none;
             border: none;
-            padding: 8px 0;
+            padding: 10px 0;
             margin: 0;
             border-left: none;
-            font-size: 0.9em;
-            color: #64748b;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.8);
+            list-style-type: none;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .guide-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: rgba(59, 130, 246, 0.8);
         }
         
         .guide-card li:hover {
             transform: none;
             background: none;
+            color: #ffffff;
+        }
+
+        /* Buttons */
+        .btn-danger, button[onclick*="dashboard.html"] {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 14px 32px;
+            font-size: 1em;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: rgba(239, 68, 68, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2);
+        }
+        
+        button[onclick*="dashboard.html"]:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .kepsek-header {
                 padding: 32px 24px;
@@ -454,6 +681,11 @@
             
             .guide-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .btn-danger, button[onclick*="dashboard.html"] {
+                width: 100%;
+                margin: 8px 0;
             }
         }
         
@@ -473,113 +705,155 @@
                 gap: 16px;
                 align-items: flex-start;
             }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+
+        /* Floating Elements for Futuristic Effect */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(100, 150, 255, 0.1) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation: float 25s infinite ease-in-out;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            right: 5%;
+            animation: float 20s infinite ease-in-out reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            33% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            66% {
+                transform: translateY(20px) translateX(-10px);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container" style="max-width: 1400px;">
-        
-        <div class="kepsek-header">
-            <h1 class="kepsek-title">🏛️ DASHBOARD KEPALA SEKOLAH</h1>
-            <p class="kepsek-subtitle">UPTD SDN Rawabuntu 03 - Sistem Monitoring Realtime Minimalist</p>
+    <!-- Floating Background Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <div class="container">
+        <div class="kepsek-header glass-card">
+            <h1 class="kepsek-title"><i class="fas fa-university"></i> DASHBOARD KEPALA SEKOLAH</h1>
+            <p class="kepsek-subtitle">UPTD SDN Rawabuntu 03 - Sistem Monitoring Realtime Futuristic</p>
             <div style="margin-top: 28px; position: relative; z-index: 2;">
-                <div id="adminInfo" class="status-badge" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);">
-                    Memuat informasi admin...
+                <div id="adminInfo" class="status-badge" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 12px; display: inline-block;">
+                    <i class="fas fa-user-circle"></i> Memuat informasi admin...
                 </div>
-                <div style="margin-top: 20px;">
-                    <button onclick="window.logoutFirebase()" class="btn-danger" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); width: auto; padding: 12px 32px; margin: 0 8px;">
-                        <span class="icon" style="margin-right: 10px;">🔒</span> Keluar Sistem
+                <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center;">
+                    <button onclick="window.logoutFirebase()" class="btn-danger">
+                        <span class="icon" style="margin-right: 10px;"><i class="fas fa-sign-out-alt"></i></span> Keluar Sistem
                     </button>
-                    <button onclick="window.location.href='dashboard.html'" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); width: auto; padding: 12px 32px; margin: 0 8px;">
-                        <span class="icon" style="margin-right: 10px;">👨‍🏫</span> Mode Guru
+                    <button onclick="window.location.href='dashboard.html'">
+                        <span class="icon" style="margin-right: 10px;"><i class="fas fa-chalkboard-teacher"></i></span> Mode Guru
                     </button>
                 </div>
             </div>
         </div>
 
         <div class="stats-grid">
-            <div class="stat-card-minimal">
-                <div class="stat-icon-circle">📚</div>
+            <div class="stat-card-minimal glass-card">
+                <div class="stat-icon-circle"><i class="fas fa-book"></i></div>
                 <div class="stat-number" id="totalModul">0</div>
                 <div class="stat-label">Total Modul</div>
-                <div class="stat-trend" id="trendModul">Loading...</div>
+                <div class="stat-trend" id="trendModul"><i class="fas fa-arrow-up"></i> Loading...</div>
             </div>
-            <div class="stat-card-minimal">
-                <div class="stat-icon-circle">📝</div>
+            <div class="stat-card-minimal glass-card">
+                <div class="stat-icon-circle"><i class="fas fa-file-alt"></i></div>
                 <div class="stat-number" id="totalSoal">0</div>
                 <div class="stat-label">Total Soal</div>
-                <div class="stat-trend" id="trendSoal">Loading...</div>
+                <div class="stat-trend" id="trendSoal"><i class="fas fa-arrow-up"></i> Loading...</div>
             </div>
-            <div class="stat-card-minimal">
-                <div class="stat-icon-circle">👨‍🏫</div>
+            <div class="stat-card-minimal glass-card">
+                <div class="stat-icon-circle"><i class="fas fa-chalkboard-teacher"></i></div>
                 <div class="stat-number" id="totalGuru">0</div>
                 <div class="stat-label">Guru Aktif</div>
-                <div class="stat-trend">+2 hari ini</div>
+                <div class="stat-trend"><i class="fas fa-user-plus"></i> +2 hari ini</div>
             </div>
-            <div class="stat-card-minimal">
-                <div class="stat-icon-circle">📊</div>
+            <div class="stat-card-minimal glass-card">
+                <div class="stat-icon-circle"><i class="fas fa-chart-bar"></i></div>
                 <div class="stat-number" id="totalMapel">0</div>
                 <div class="stat-label">Mapel Tersedia</div>
-                <div class="stat-trend">+3 baru</div>
+                <div class="stat-trend"><i class="fas fa-plus-circle"></i> +3 baru</div>
             </div>
         </div>
 
-        <div class="live-status">
+        <div class="live-status glass-card">
             <div class="live-status-content">
                 <div class="live-status-indicator"></div>
                 <div>
-                    <strong>📡 Status Monitoring:</strong> ONLINE (Realtime Update)
+                    <strong><i class="fas fa-satellite-dish"></i> Status Monitoring:</strong> ONLINE (Realtime Update)
                 </div>
             </div>
             <div class="last-update">
-                Update: <span id="lastUpdateTime">-</span>
+                <i class="fas fa-sync-alt"></i> Update: <span id="lastUpdateTime">-</span>
             </div>
         </div>
 
         <div class="filter-tabs">
-            <button class="filter-tab active" onclick="filterData('all')">Semua Data</button>
-            <button class="filter-tab" onclick="filterData('today')">Hari Ini</button>
-            <button class="filter-tab" onclick="filterData('week')">Minggu Ini</button>
-            <button class="filter-tab" onclick="filterData('modul')">Modul Ajar</button>
-            <button class="filter-tab" onclick="filterData('soal')">Bank Soal</button>
-            <button class="filter-tab" onclick="filterData('recent')">Terbaru</button>
+            <button class="filter-tab active" onclick="filterData('all')"><i class="fas fa-layer-group"></i> Semua Data</button>
+            <button class="filter-tab" onclick="filterData('today')"><i class="fas fa-calendar-day"></i> Hari Ini</button>
+            <button class="filter-tab" onclick="filterData('week')"><i class="fas fa-calendar-week"></i> Minggu Ini</button>
+            <button class="filter-tab" onclick="filterData('modul')"><i class="fas fa-book"></i> Modul Ajar</button>
+            <button class="filter-tab" onclick="filterData('soal')"><i class="fas fa-file-alt"></i> Bank Soal</button>
+            <button class="filter-tab" onclick="filterData('recent')"><i class="fas fa-clock"></i> Terbaru</button>
         </div>
 
         <div class="monitor-grid">
-            
-            <div class="data-card">
+            <div class="data-card glass-card">
                 <div class="data-card-header">
-                    <h3 class="data-card-title"><span>📚</span> Rekap Modul Ajar</h3>
+                    <h3 class="data-card-title"><i class="fas fa-book"></i> Rekap Modul Ajar</h3>
                     <span class="data-card-count" id="countModul">0 dokumen</span>
                 </div>
                 <div class="data-list" id="rekapSemuaModul">
                     <div class="empty-state">
-                        <div class="empty-state-icon">📖</div>
+                        <div class="empty-state-icon"><i class="fas fa-book-open"></i></div>
                         <p>Menunggu data dari guru...</p>
-                        <p style="font-size: 0.9em; margin-top: 8px;">Data akan muncul otomatis saat guru menyimpan modul</p>
+                        <p style="font-size: 0.9em; margin-top: 8px; color: rgba(255,255,255,0.5);">Data akan muncul otomatis saat guru menyimpan modul</p>
                     </div>
                 </div>
             </div>
 
-            <div class="data-card">
+            <div class="data-card glass-card">
                 <div class="data-card-header">
-                    <h3 class="data-card-title"><span>📝</span> Rekap Bank Soal</h3>
+                    <h3 class="data-card-title"><i class="fas fa-file-alt"></i> Rekap Bank Soal</h3>
                     <span class="data-card-count" id="countSoal">0 dokumen</span>
                 </div>
                 <div class="data-list" id="rekapSemuaSoal">
                     <div class="empty-state">
-                        <div class="empty-state-icon">📝</div>
+                        <div class="empty-state-icon"><i class="fas fa-file-contract"></i></div>
                         <p>Menunggu data dari guru...</p>
-                        <p style="font-size: 0.9em; margin-top: 8px;">Data akan muncul otomatis saat guru menyimpan soal</p>
+                        <p style="font-size: 0.9em; margin-top: 8px; color: rgba(255,255,255,0.5);">Data akan muncul otomatis saat guru menyimpan soal</p>
                     </div>
                 </div>
             </div>
-
         </div>
         
         <div class="guide-grid">
-            <div class="guide-card">
-                <h4><span>📊</span> Fitur Dashboard:</h4>
+            <div class="guide-card glass-card">
+                <h4><i class="fas fa-chart-line"></i> Fitur Dashboard:</h4>
                 <ul>
                     <li>Data update realtime tanpa refresh</li>
                     <li>Filter data berdasarkan tanggal/jenis</li>
@@ -589,8 +863,8 @@
                 </ul>
             </div>
             
-            <div class="guide-card">
-                <h4><span>🔍</span> Cara Penggunaan:</h4>
+            <div class="guide-card glass-card">
+                <h4><i class="fas fa-compass"></i> Cara Penggunaan:</h4>
                 <ul>
                     <li>Klik "Lihat Isi" untuk preview dokumen</li>
                     <li>Gunakan filter untuk menyaring data</li>
@@ -600,8 +874,8 @@
                 </ul>
             </div>
             
-            <div class="guide-card">
-                <h4><span>📈</span> Analisis Data:</h4>
+            <div class="guide-card glass-card">
+                <h4><i class="fas fa-chart-pie"></i> Analisis Data:</h4>
                 <ul>
                     <li>Monitor produktivitas guru</li>
                     <li>Tracking penggunaan AI</li>
@@ -612,14 +886,12 @@
             </div>
         </div>
         
-        <div style="text-align: center; margin-top: 60px; color: #64748b; font-size: 14px; padding-top: 32px; border-top: 1px solid #e2e8f0;">
-            <p>© 2026 Asisten Guru AI - Dashboard Kepala Sekolah Minimalist</p>
-            <p style="margin-top: 8px;">Sistem Monitoring Pembelajaran Berbasis AI</p>
-        </div>
+        <footer>
+            <p>© 2026 Asisten Guru AI - Dashboard Kepala Sekolah Futuristic Premium</p>
+            <p style="margin-top: 8px;">Sistem Monitoring Pembelajaran Berbasis AI | Glassmorphism Design</p>
+        </footer>
     </div>
 
-    <script type="module" src="js/auth.js"></script>
-    <script type="module" src="js/kepsek.js"></script>
     <script>
         // Tambahan fitur untuk dashboard kepsek
         function filterData(type) {
@@ -637,6 +909,12 @@
             
             // Save filter preference
             localStorage.setItem('lastFilter', type);
+            
+            // Tambahkan efek visual saat filter diubah
+            event.target.style.transform = "scale(0.95)";
+            setTimeout(() => {
+                event.target.style.transform = "";
+            }, 150);
         }
         
         // Update time function
@@ -676,7 +954,44 @@
                         animateValue(element, 0, [12, 156, 8, 15][index], 1000);
                     }
                 });
+                
+                // Update counts
+                document.getElementById('countModul').textContent = '12 dokumen';
+                document.getElementById('countSoal').textContent = '156 dokumen';
+                document.getElementById('trendModul').innerHTML = '<i class="fas fa-arrow-up"></i> +5 bulan ini';
+                document.getElementById('trendSoal').innerHTML = '<i class="fas fa-arrow-up"></i> +42 bulan ini';
             }, 500);
+            
+            // Add some sample data items
+            setTimeout(() => {
+                const modulList = document.getElementById('rekapSemuaModul');
+                const soalList = document.getElementById('rekapSemuaSoal');
+                
+                // Clear empty states
+                modulList.innerHTML = '';
+                soalList.innerHTML = '';
+                
+                // Add sample modul items
+                const modulItems = [
+                    {title: "Modul Matematika Kelas 5", teacher: "Bu Sari", time: "2 jam lalu", content: "Materi tentang pecahan dan desimal"},
+                    {title: "Modul IPA Kelas 6", teacher: "Pak Budi", time: "5 jam lalu", content: "Sistem tata surya dan planet"},
+                    {title: "Modul Bahasa Indonesia", teacher: "Bu Ani", time: "Kemarin", content: "Membuat karangan narasi"}
+                ];
+                
+                const soalItems = [
+                    {title: "Bank Soal Matematika", teacher: "Bu Sari", time: "1 jam lalu", content: "50 soal pilihan ganda tentang geometri"},
+                    {title: "Soal UTS IPA", teacher: "Pak Budi", time: "3 jam lalu", content: "Ujian tengah semester untuk kelas 4-6"},
+                    {title: "Latihan Bahasa Inggris", teacher: "Bu Rina", time: "Kemarin", content: "Vocabulary dan grammar untuk kelas 5"}
+                ];
+                
+                modulItems.forEach(item => {
+                    modulList.appendChild(createDataItem(item, 'modul'));
+                });
+                
+                soalItems.forEach(item => {
+                    soalList.appendChild(createDataItem(item, 'soal'));
+                });
+            }, 1500);
         });
         
         // Animate number function
@@ -692,6 +1007,36 @@
             };
             window.requestAnimationFrame(step);
         }
+        
+        // Create data item element
+        function createDataItem(data, type) {
+            const item = document.createElement('div');
+            item.className = 'data-item';
+            item.innerHTML = `
+                <div class="data-item-header">
+                    <h4 class="data-item-title">${data.title}</h4>
+                    <span class="data-item-time">${data.time}</span>
+                </div>
+                <div class="data-item-content">${data.content}</div>
+                <div class="data-item-meta">
+                    <span>Oleh: ${data.teacher}</span>
+                    <div class="data-item-actions">
+                        <button class="action-btn-small"><i class="fas fa-eye"></i> Lihat Isi</button>
+                        <button class="action-btn-small"><i class="fas fa-download"></i> Unduh</button>
+                    </div>
+                </div>
+            `;
+            return item;
+        }
+        
+        // Simulate Firebase logout
+        window.logoutFirebase = function() {
+            if (confirm("Apakah Anda yakin ingin keluar dari sistem?")) {
+                alert("Anda telah keluar dari sistem. Mengarahkan ke halaman login...");
+                // In a real app, this would redirect to login page
+                // window.location.href = "login.html";
+            }
+        };
     </script>
 </body>
 </html>

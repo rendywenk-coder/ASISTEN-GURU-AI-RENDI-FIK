@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Guru - Asisten AI Minimalist</title>
+    <title>Dashboard Guru - Asisten AI Futuristic</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <style>
-        /* Dashboard Specific Styles */
+        /* Dashboard Specific Styles - Futuristic Premium */
         .dashboard-header {
             margin-bottom: 40px;
             text-align: center;
@@ -19,17 +19,21 @@
         
         .dashboard-title {
             font-size: 2.8em;
-            font-weight: 700;
-            color: #1e293b;
+            font-weight: 300;
+            color: #ffffff;
             margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
         
         .dashboard-subtitle {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 1.1em;
-            font-weight: 400;
+            font-weight: 300;
             margin-bottom: 24px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
         
         .action-buttons {
@@ -42,100 +46,224 @@
         
         .action-buttons button {
             width: auto;
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-weight: 500;
-            min-width: 160px;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            min-width: 180px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #9d4edd 0%, #00d4ff 100%);
+            box-shadow: 0 8px 20px rgba(157, 78, 221, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .action-buttons button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        
+        .action-buttons button:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 15px 40px rgba(157, 78, 221, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                0 0 30px rgba(0, 212, 255, 0.4);
+            letter-spacing: 1.2px;
+        }
+        
+        .action-buttons button:hover::before {
+            left: 100%;
+        }
+        
+        .chat-ai-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .chat-ai-button:hover {
+            box-shadow: 
+                0 15px 40px rgba(59, 130, 246, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                0 0 30px rgba(59, 130, 246, 0.4) !important;
         }
         
         .module-preview {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 16px;
-            padding: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 28px;
             margin-top: 20px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+        
+        .module-preview:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(0, 212, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
         }
         
         .stat-item {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s ease;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.6s;
+        }
+        
+        .stat-item:hover::before {
+            left: 100%;
         }
         
         .stat-item:hover {
-            border-color: #e2e8f0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(0, 212, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, #9d4edd 0%, #00d4ff 100%);
             color: white;
-            font-size: 1.2em;
+            font-size: 1.4em;
+            box-shadow: 
+                0 8px 20px rgba(157, 78, 221, 0.3),
+                0 0 20px rgba(0, 212, 255, 0.3);
+            position: relative;
+            z-index: 2;
         }
         
         .stat-content h4 {
             margin: 0;
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9em;
             font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .stat-content .value {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: #1e293b;
+            font-size: 1.8em;
+            font-weight: 300;
+            color: #ffffff;
             margin-top: 4px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
         
-        /* Enhanced Card Styles */
+        /* Enhanced Card Styles - Glassmorphism */
         .enhanced-card {
-            background: #ffffff;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
             padding: 32px;
             margin-bottom: 24px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: 0.6s;
+            z-index: 1;
+        }
+        
+        .enhanced-card:hover::before {
+            left: 100%;
         }
         
         .enhanced-card:hover {
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.06);
-            border-color: #dbeafe;
-            transform: translateY(-4px);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                0 0 30px rgba(0, 212, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
         .card-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 2;
         }
         
         .card-title {
             font-size: 1.4em;
-            font-weight: 600;
-            color: #1e293b;
+            font-weight: 300;
+            color: #ffffff;
             margin: 0;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
         }
         
         .card-badge {
-            background: #f1f5f9;
-            color: #64748b;
-            padding: 6px 12px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3) 0%, rgba(0, 212, 255, 0.3) 100%);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 25px;
             font-size: 0.85em;
-            font-weight: 500;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         /* Advanced Form Controls */
@@ -149,11 +277,13 @@
         
         .select-arrow {
             position: absolute;
-            right: 16px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
             pointer-events: none;
-            color: #94a3b8;
+            color: #00d4ff;
+            font-size: 1.2em;
+            filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
         }
         
         /* Feature Grid */
@@ -165,67 +295,102 @@
         }
         
         .feature-item {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 28px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: 0.6s;
+        }
+        
+        .feature-item:hover::before {
+            left: 100%;
         }
         
         .feature-item:hover {
-            border-color: #3b82f6;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.08);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(0, 212, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .feature-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            color: #3b82f6;
-            font-size: 1.5em;
+            margin: 0 auto 24px;
+            color: #00d4ff;
+            font-size: 1.8em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
         }
         
         .feature-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 12px;
+            font-size: 1.3em;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
         }
         
         .feature-desc {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95em;
-            line-height: 1.5;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
         }
         
         /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 30px;
+            padding-left: 36px;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
-            left: 7px;
+            left: 10px;
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            background: linear-gradient(to bottom, #9d4edd, #00d4ff);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
         
         .timeline-item {
             position: relative;
             margin-bottom: 24px;
             padding-bottom: 24px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .timeline-item:last-child {
@@ -235,20 +400,23 @@
         
         .timeline-dot {
             position: absolute;
-            left: -30px;
-            top: 0;
-            width: 16px;
-            height: 16px;
+            left: -36px;
+            top: 4px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: #3b82f6;
-            border: 3px solid #ffffff;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            background: linear-gradient(135deg, #9d4edd 0%, #00d4ff 100%);
+            border: 3px solid rgba(15, 12, 41, 0.8);
+            box-shadow: 
+                0 0 0 3px rgba(0, 212, 255, 0.3),
+                0 0 15px rgba(0, 212, 255, 0.5);
+            z-index: 2;
         }
         
         /* Responsive Dashboard */
         @media (max-width: 1200px) {
             .dashboard-grid {
-                gap: 24px;
+                gap: 28px;
             }
             
             .feature-grid {
@@ -256,7 +424,7 @@
             }
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .dashboard-title {
                 font-size: 2.2em;
             }
@@ -277,7 +445,7 @@
             .card-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 12px;
+                gap: 16px;
             }
             
             .card-badge {
@@ -285,49 +453,106 @@
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .dashboard-title {
                 font-size: 1.8em;
             }
             
+            .dashboard-subtitle {
+                font-size: 1em;
+                letter-spacing: 1px;
+            }
+            
             .enhanced-card {
                 padding: 24px;
+                border-radius: 18px;
+            }
+            
+            .feature-item {
+                padding: 24px;
+            }
+            
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .dashboard-title {
+                font-size: 1.6em;
+            }
+            
+            .dashboard-subtitle {
+                font-size: 0.9em;
+            }
+            
+            .enhanced-card {
+                padding: 20px;
             }
             
             .feature-item {
                 padding: 20px;
             }
+            
+            .action-buttons button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
         }
         
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            .card, .enhanced-card, .feature-item {
-                background: #1e293b;
-                border-color: #334155;
-                color: #f1f5f9;
-            }
-            
-            input, select, textarea, .output-area {
-                background: #1e293b;
-                border-color: #334155;
-                color: #f1f5f9;
-            }
-            
-            .output-area {
-                background: linear-gradient(to bottom, #1e293b, #0f172a);
-            }
+        /* Custom scrollbar for feature grid */
+        .feature-grid::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .feature-grid::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        .feature-grid::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #9d4edd, #00d4ff);
+            border-radius: 10px;
+        }
+        
+        /* Animation for feature items */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .feature-item:nth-child(odd) {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .feature-item:nth-child(even) {
+            animation: float 6s ease-in-out infinite 0.5s;
+        }
+        
+        /* Neon text effect for titles */
+        .neon-title {
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.3),
+                0 0 15px rgba(157, 78, 221, 0.2),
+                0 0 20px rgba(0, 212, 255, 0.1);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="panel-header fade-in">
-            <h1 class="dashboard-title" style="color: white;">🎓 ASISTEN GURU PROFESIONAL</h1>
+            <h1 class="dashboard-title neon-title">🤖 ASISTEN GURU FUTURISTIK</h1>
             <div id="guruInfo" class="status-badge">Memuat data pengguna...</div>
             
             <div id="progressAI" class="progress-indicator">⏳ Sedang menyusun dokumen lengkap...</div>
             
             <div class="action-buttons">
+                <button onclick="window.location.href='fitur-ai.html'" class="chat-ai-button">
+                    <span class="icon">🤖</span> Mode Chat AI
+                </button>
                 <button onclick="window.logoutFirebase()" class="btn-danger">
                     <span class="icon">🚪</span> Keluar Sistem
                 </button>
@@ -369,7 +594,7 @@
                 <!-- IDENTITAS PEMBELAJARAN -->
                 <section class="enhanced-card">
                     <div class="card-header">
-                        <h3 class="card-title"><span class="icon">🛠️</span> Identitas Pembelajaran</h3>
+                        <h3 class="card-title neon-title"><span class="icon">🛠️</span> Identitas Pembelajaran</h3>
                         <span class="card-badge">Wajib Diisi</span>
                     </div>
                     
@@ -403,6 +628,7 @@
     <option value="Kurikulum Khusus">Kurikulum Khusus/Pondok</option>
     <option value="Kurikulum Deep Learning">Deep Learning</option>
 </select>
+                            <div class="select-arrow">▼</div>
                         </div>
                     </div>
 
@@ -677,7 +903,7 @@
                 <!-- GENERATOR SOAL & EVALUASI -->
                 <section class="enhanced-card">
                     <div class="card-header">
-                        <h3 class="card-title"><span class="icon">📝</span> Generator Soal & Evaluasi</h3>
+                        <h3 class="card-title neon-title"><span class="icon">📝</span> Generator Soal & Evaluasi</h3>
                         <span class="card-badge">Smart AI</span>
                     </div>
                     
@@ -758,7 +984,7 @@
                 <!-- GENERATOR RANGKUMAN -->
                 <section class="enhanced-card">
                     <div class="card-header">
-                        <h3 class="card-title"><span class="icon">📖</span> Generator Rangkuman</h3>
+                        <h3 class="card-title neon-title"><span class="icon">📖</span> Generator Rangkuman</h3>
                         <span class="card-badge">Adaptif</span>
                     </div>
                     
@@ -834,10 +1060,10 @@
                 <!-- JADWAL PELAJARAN -->
                 <section class="enhanced-card">
                     <div class="card-header">
-                        <h3 class="card-title"><span class="icon">📅</span> Jadwal Pelajaran</h3>
+                        <h3 class="card-title neon-title"><span class="icon">📅</span> Jadwal Pelajaran</h3>
                         <span class="card-badge">Editable</span>
                     </div>
-                    <p style="font-size: 13px; color: #64748b; margin-bottom: 16px; line-height: 1.5;">Klik pada jam/mapel untuk mengedit. Disimpan otomatis di browser.</p>
+                    <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7); margin-bottom: 16px; line-height: 1.5;">Klik pada jam/mapel untuk mengedit. Disimpan otomatis di browser.</p>
                     <div style="overflow-x: auto;">
                         <table class="jadwal-table">
                             <thead>
@@ -890,7 +1116,7 @@
                                 </tr>
                                 <tr>
                                     <td contenteditable="true" class="editable">10.00-10.15</td>
-                                    <td colspan="7" style="background: #f8fafc; font-weight: 600; color: #475569; text-align: center;">ISTIRAHAT</td>
+                                    <td colspan="7" style="background: rgba(255, 255, 255, 0.05); font-weight: 600; color: rgba(255, 255, 255, 0.9); text-align: center; border: 1px solid rgba(255, 255, 255, 0.1);">ISTIRAHAT</td>
                                 </tr>
                                 <tr>
                                     <td contenteditable="true" class="editable">10.15-11.00</td>
@@ -928,7 +1154,7 @@
             <div class="right-panel">
                 <section class="enhanced-card" style="height: 100%; display: flex; flex-direction: column;">
                     <div class="card-header">
-                        <h3 class="card-title"><span class="icon">📄</span> Hasil Output Dokumen</h3>
+                        <h3 class="card-title neon-title"><span class="icon">📄</span> Hasil Output Dokumen</h3>
                         <span class="card-badge">Siap Copy-Paste</span>
                     </div>
                     
@@ -943,16 +1169,16 @@
                         </button>
                     </div>
                     
-                    <div style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #64748b; padding-top: 16px; border-top: 1px solid #f1f5f9;">
-                        <div>Status: <span id="statusOutput" style="color: #3b82f6; font-weight: 500;">Menunggu input...</span></div>
-                        <div>Karakter: <span id="charCount" style="color: #1e293b; font-weight: 600;">0</span></div>
+                    <div style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255, 255, 255, 0.7); padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div>Status: <span id="statusOutput" style="color: #00d4ff; font-weight: 500; text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);">Menunggu input...</span></div>
+                        <div>Karakter: <span id="charCount" style="color: #ffffff; font-weight: 600; text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);">0</span></div>
                     </div>
                 </section>
                 
                 <!-- STATISTICS PANEL -->
                 <section class="enhanced-card">
                     <div class="card-header">
-                        <h3 class="card-title"><span class="icon">📊</span> Statistik Penggunaan</h3>
+                        <h3 class="card-title neon-title"><span class="icon">📊</span> Statistik Penggunaan</h3>
                         <span class="card-badge">Realtime</span>
                     </div>
                     
@@ -976,38 +1202,31 @@
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
-                            <h4 style="margin: 0 0 8px 0; color: #1e293b;">Modul Matematika Kelas 7</h4>
-                            <p style="margin: 0; color: #64748b; font-size: 0.9em;">Dibuat 2 jam yang lalu</p>
+                            <h4 style="margin: 0 0 8px 0; color: #ffffff; font-weight: 300;">Modul Matematika Kelas 7</h4>
+                            <p style="margin: 0; color: rgba(255, 255, 255, 0.7); font-size: 0.9em;">Dibuat 2 jam yang lalu</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
-                            <h4 style="margin: 0 0 8px 0; color: #1e293b;">Soal HOTS IPA</h4>
-                            <p style="margin: 0; color: #64748b; font-size: 0.9em;">Dibuat kemarin</p>
+                            <h4 style="margin: 0 0 8px 0; color: #ffffff; font-weight: 300;">Soal HOTS IPA</h4>
+                            <p style="margin: 0; color: rgba(255, 255, 255, 0.7); font-size: 0.9em;">Dibuat kemarin</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
-                            <h4 style="margin: 0 0 8px 0; color: #1e293b;">Rangkuman Bahasa Indonesia</h4>
-                            <p style="margin: 0; color: #64748b; font-size: 0.9em;">Dibuat 3 hari yang lalu</p>
+                            <h4 style="margin: 0 0 8px 0; color: #ffffff; font-weight: 300;">Rangkuman Bahasa Indonesia</h4>
+                            <p style="margin: 0; color: rgba(255, 255, 255, 0.7); font-size: 0.9em;">Dibuat 3 hari yang lalu</p>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
 
-        <div style="margin-top: 40px; text-align: center;">
-            <a href="fitur-ai.html" style="text-decoration: none;">
-                <button style="background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); width: 100%; max-width: 400px; padding: 18px; border-radius: 12px; font-size: 16px;" class="fade-in">
-                    <span style="font-size: 1.2em; margin-right: 12px;">🤖</span>
-                    Buka Mode Chat AI (Bebas Konsultasi)
-                </button>
-            </a>
-        </div>
+        <!-- TOMBOL MODE CHAT AI DIHAPUS DARI SINI (SUDAH DIPINDAHKAN KE ATAS) -->
         
         <hr class="divider">
         
-        <div style="text-align: center; margin-top: 40px; color: #64748b; font-size: 14px;">
+        <div style="text-align: center; margin-top: 40px; color: rgba(255, 255, 255, 0.7); font-size: 14px;">
             <p>© 2026 Asisten Rendi Rahadian - UPTD SDN Rawabuntu 03</p>
-            <p style="margin-top: 8px;">Sistem Manajemen Pembelajaran Berbasis AI Minimalist</p>
+            <p style="margin-top: 8px;">Sistem Manajemen Pembelajaran Berbasis AI Futuristic Premium</p>
         </div>
     </div>
 
@@ -1057,7 +1276,7 @@
                     const key = `${this.parentElement.rowIndex}-${this.cellIndex}`;
                     savedSchedule[key] = this.textContent;
                     localStorage.setItem('jadwalPelajaran', JSON.stringify(savedSchedule));
-                    this.style.background = '#f0fdf4';
+                    this.style.background = 'rgba(0, 212, 255, 0.1)';
                     setTimeout(() => {
                         this.style.background = '';
                     }, 500);
